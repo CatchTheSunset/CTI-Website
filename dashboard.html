@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CTI Dashboard</title>
+</head>
+
+<body>
+
+    <h1>CTI Dashboard</h1>
+
+    <p id="userRole"></p>
+
+    <button id="adminBtn">Admin Page</button>
+
+    <script>
+        const role = localStorage.getItem("role");
+
+        document.getElementById("userRole").innerText =
+            "Current role: " + role;
+        
+        document.getElementById("adminBtn").addEventListener("click", function () {
+            const apiUrl = "https://ym8icbwmok.execute-api.us-east-1.amazonaws.com/default/UnauthorizedAccessCheck"
+
+            window.location.href =
+            apiUrl + "?role=" + role + "&requested_page=admin";
+        });
+    </script>
+
+</body>
+</html>
